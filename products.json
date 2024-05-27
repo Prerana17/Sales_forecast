@@ -1,0 +1,105 @@
+[
+    {
+        "Product_ID": 1,
+        "Product_Description": "Shorts - cotton - white - L",
+        "Category": 1,
+        "SubCategory": 1,
+        "Line": "Men",
+        "Type": "Pants & Skirts"
+    },
+    {
+        "Product_ID": 2,
+        "Product_Description": "Polo shirt - navy blue - XL",
+        "Category": 1,
+        "SubCategory": 1,
+        "Line": "Men",
+        "Type": "Shirts"
+    },
+    {
+        "Product_ID": 3,
+        "Product_Description": "Thermal pants - Regular Fit - LYCRA",
+        "Category": 1,
+        "SubCategory": 2,
+        "Line": "Men",
+        "Type": "Pants & Skirts"
+    },
+    {
+        "Product_ID": 4,
+        "Product_Description": "HUGO BOSS long-sleeved shirt XL",
+        "Category": 1,
+        "SubCategory": 2,
+        "Line": "Men",
+        "Type": "Shirts"
+    },
+    {
+        "Product_ID": 5,
+        "Product_Description": "Bugatti Chino - Regular Fit - LYCRA",
+        "Category": 1,
+        "SubCategory": 3,
+        "Line": "Men",
+        "Type": "Pants & Skirts"
+    },
+    {
+        "Product_ID": 6,
+        "Product_Description": "HUGO BOSS Business Shirt - white - 44/45",
+        "Category": 1,
+        "SubCategory": 3,
+        "Line": "Men",
+        "Type": "Shirts"
+    },
+    {
+        "Product_ID": 7,
+        "Product_Description": "Cotton shorts - red - size M",
+        "Category": 1,
+        "SubCategory": 1,
+        "Line": "Women",
+        "Type": "Pants & Skirts"
+    },
+    {
+        "Product_ID": 8,
+        "Product_Description": "Shirt - light blue - size S",
+        "Category": 1,
+        "SubCategory": 1,
+        "Line": "Women",
+        "Type": "Shirts"
+    },
+    {
+        "Product_ID": 9,
+        "Product_Description": "Skirt - dark blue - size M",
+        "Category": 1,
+        "SubCategory": 2,
+        "Line": "Women",
+        "Type": "Pants & Skirts"
+    },
+    {
+        "Product_ID": 10,
+        "Product_Description": "Lady's blouse casual - cotton - size 36",
+        "Category": 1,
+        "SubCategory": 2,
+        "Line": "Women",
+        "Type": "Shirts"
+    },
+    {
+        "Product_ID": 11,
+        "Product_Description": "Lady's trousers - dark blue - size 36",
+        "Category": 1,
+        "SubCategory": 3,
+        "Line": "Women",
+        "Type": "Pants & Skirts"
+    },
+    {
+        "Product_ID": 12,
+        "Product_Description": "Lady's business blouse - white",
+        "Category": 1,
+        "SubCategory": 3,
+        "Line": "Women",
+        "Type": "Shirts"
+    },
+    {
+        "Product_ID": 7,
+        "Category": 1,
+        "SubCategory": 1,
+        "Line": "Women",
+        "Type": "Pants & Skirts"
+    }
+]
