@@ -14,6 +14,8 @@ Data Forecasting: Time Series and Regression Modelling Approach
   - Parallelization: It efficiently parallelizes tree construction, making it faster than traditional gradient boosting.
   - Handling Missing Data: XGBoost can handle missing values during training and prediction.
   - Feature Importance: It provides insights into feature importance, aiding model interpretation.
+    
+    ![XG_boost](https://github.com/Prerana17/Sales_forecast/assets/82475780/8650a363-3182-4f71-ab83-6d5ae2ce4414)
   
 **Exponential Smoothing:**
 
@@ -26,7 +28,9 @@ Data Forecasting: Time Series and Regression Modelling Approach
   - Weighted Averaging: Exponential smoothing assigns different weights to past observations, emphasizing recent data.
   - Trend and Seasonality: It captures trends and seasonality in time series data.
   - Limited Complexity: Exponential smoothing models are relatively simple and interpretable.
-  
+ 
+    ![exponential_smoothing](https://github.com/Prerana17/Sales_forecast/assets/82475780/c3f50d01-3d64-4652-b1d7-ec75cb8184b9)
+
 **Linear Regression:**
 
 * Overview:
@@ -38,7 +42,9 @@ Data Forecasting: Time Series and Regression Modelling Approach
   - Interpretability: Linear regression provides interpretable coefficients.
   - Assumptions: Assumes linearity, independence, homoscedasticity, and normally distributed errors.
   - Vulnerable to Outliers: Sensitive to outliers and non-linear relationships.
-  
+
+  ![Linear_regression](https://github.com/Prerana17/Sales_forecast/assets/82475780/17db7935-e29c-4d9b-becb-aa39608a78b5)
+
 **Ridge Regression:**
 
 * Overview:
@@ -49,6 +55,9 @@ Data Forecasting: Time Series and Regression Modelling Approach
   - Regularization: Ridge regression balances the trade-off between fitting the data and controlling model complexity.
   - Shrinking Coefficients: The L2 penalty shrinks coefficients toward zero.
   - Multicollinearity: Useful when dealing with multicollinearity among predictors.
+
+    ![Ridge_regression](https://github.com/Prerana17/Sales_forecast/assets/82475780/99787a28-428c-4e89-afd0-fbe01a9121f9)
+
   
 **Why XGBoost for Forecasting?**
 
