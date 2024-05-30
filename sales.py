@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from statsmodels.tsa.arima.model import ARIMA
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
@@ -13,10 +12,9 @@ store_df = pd.read_csv('store.csv')
 subcategory_df = pd.read_csv('subcategory.csv')
 sales_df = pd.read_csv('sales.csv', parse_dates=['Date'], dayfirst=True)
 
-# how many uniue counts of Store_ID in sales_df 
+# Unique counts of Store_ID in sales_df 
 sales_df['Store_ID'].nunique()
 #print(sales_df)
-
 
 # Check the first few rows of each data frame
 # print(products_df.head())
@@ -64,7 +62,6 @@ daily_sales.set_index('Date', inplace=True)
 
 # Resample to monthly sales volume
 monthly_sales = daily_sales.resample('M').sum()
-
 #print(monthly_sales.head())
 
 # XGBoost
@@ -84,17 +81,17 @@ data_lagged = lagged_data(monthly_sales, lag=lag)
 X = data_lagged.drop('X-0', axis=1)
 y = data_lagged['X-0']
 
-# Split the data
+# Spliting the data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, shuffle=False)
 
-# Fit the model
+# Fitting the model
 model = XGBRegressor()
 model.fit(X_train, y_train)
 
-# Make predictions
+# Making predictions
 y_pred = model.predict(X_test)
 
-# Calculate the RMSE
+# Calculating the RMSE
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print(f'RMSE: {rmse}')
 #calculate r2_score
@@ -102,7 +99,7 @@ from sklearn.metrics import r2_score
 r2 = r2_score(y_test, y_pred)
 print(f'R2: {r2}')
 
-# Plot the predictions
+# Ploting the predictions
 plt.figure(figsize=(12, 6))
 plt.plot(y, label='Actual')
 plt.plot(pd.Series(y_pred, index=y_test.index), label='Predicted')
@@ -121,14 +118,14 @@ monthly_sales = daily_sales.resample('M').sum()
 # Exponential Smoothing
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
-# Fit the model
+# Fiting the model
 model = ExponentialSmoothing(monthly_sales, trend='add', seasonal='add', seasonal_periods=12)
 model_fit = model.fit()
 
-# Make predictions
+# Making predictions
 y_pred = model_fit.predict(start=0, end=len(monthly_sales) + 12)
 
-# Calculate the RMSE
+# Calculating the RMSE
 rmse = np.sqrt(mean_squared_error(monthly_sales, y_pred[:len(monthly_sales)]))
 print(f'RMSE: {rmse}')
 #calculate r2_score
@@ -136,7 +133,7 @@ from sklearn.metrics import r2_score
 r2 = r2_score(monthly_sales, y_pred[:len(monthly_sales)])
 print(f'R2: {r2}')
 
-# Plot the predictions
+# Ploting the predictions
 plt.figure(figsize=(12, 6))
 plt.plot(monthly_sales, label='Actual')
 plt.plot(y_pred, label='Predicted')
@@ -157,7 +154,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
 
-# Create lag features for the Linear Regression model
+# Creating lag features for the Linear Regression model
 def create_lag_features(data, lags):
     lagged_data = pd.DataFrame(index=data.index)
     lagged_data['target'] = data.values
@@ -178,26 +175,26 @@ train_data, test_data = train_test_split(lagged_data, test_size=0.2, shuffle=Fal
 X_train, y_train = train_data.drop(columns=['target']), train_data['target']
 X_test, y_test = test_data.drop(columns=['target']), test_data['target']
 
-# Fit the Linear Regression model
+# Fitting the Linear Regression model
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-# Make predictions
+# Making predictions
 y_pred_train = model.predict(X_train)
 y_pred_test = model.predict(X_test)
 
-# Combine train and test predictions
+# Combining train and test predictions
 y_pred = np.concatenate([y_pred_train, y_pred_test])
 
-# Calculate the RMSE
+# Calculating the RMSE
 rmse = np.sqrt(mean_squared_error(lagged_data['target'], y_pred))
 print(f'RMSE: {rmse}')
 
-# Calculate the R2 score
+# Calculating the R2 score
 r2 = r2_score(lagged_data['target'], y_pred)
 print(f'R2: {r2}')
 
-# Plot the predictions
+# Ploting the predictions
 plt.figure(figsize=(12, 6))
 plt.plot(monthly_sales, label='Actual')
 plt.plot(lagged_data.index, y_pred, label='Predicted')
@@ -220,7 +217,7 @@ daily_sales.set_index('Date', inplace=True)
 # Resample to monthly sales volume
 monthly_sales = daily_sales.resample('M').sum()
 
-# Create lag features for the Ridge Regression model
+# Creating lag features for the Ridge Regression model
 def create_lag_features(data, lags):
     lagged_data = pd.DataFrame(index=data.index)
     lagged_data['target'] = data.values
@@ -234,33 +231,33 @@ lags = [1, 2, 3, 4, 5, 6, 12]
 # Create lagged features
 lagged_data = create_lag_features(monthly_sales, lags)
 
-# Split the data into train and test sets
+# Splitting the data into train and test sets
 train_data, test_data = train_test_split(lagged_data, test_size=0.2, shuffle=False)
 
 # Separate features and target variable
 X_train, y_train = train_data.drop(columns=['target']), train_data['target']
 X_test, y_test = test_data.drop(columns=['target']), test_data['target']
 
-# Fit the Ridge Regression model
+# Fitting the Ridge Regression model
 model = Ridge(alpha=1.0)
 model.fit(X_train, y_train)
 
-# Make predictions
+# Making predictions
 y_pred_train = model.predict(X_train)
 y_pred_test = model.predict(X_test)
 
-# Combine train and test predictions
+# Combining train and test predictions
 y_pred = np.concatenate([y_pred_train, y_pred_test])
 
-# Calculate the RMSE
+# Calculating the RMSE
 rmse = np.sqrt(mean_squared_error(lagged_data['target'], y_pred))
 print(f'RMSE: {rmse}')
 
-# Calculate the R2 score
+# Calculating the R2 score
 r2 = r2_score(lagged_data['target'], y_pred)
 print(f'R2: {r2}')
 
-# Plot the predictions
+# Ploting the predictions
 plt.figure(figsize=(12, 6))
 plt.plot(monthly_sales, label='Actual')
 plt.plot(lagged_data.index, y_pred, label='Predicted')
